@@ -1,0 +1,32 @@
+//Open file to add a line
+sudo vi /etc/apt/sources.list.d/pgdg.list
+
+// Press i to insert and add the following
+deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main
+
+// run this command to get signing key for repository
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+
+// update apt-get
+sudo apt-get update
+
+// This installs PostgreSQL version 11
+sudo apt-get install postgresql-11
+
+//This starts the server
+sudo systemctl start postgresql
+
+// Enable server to start on boot up
+sudo systemctl enable postgresql
+
+// install pgAdmin4
+sudo apt-get install pgadmin4
+
+//login in to server with psql
+sudo -u postgres psql
+
+//run this in psql
+alter user postgres with password 'postgres';
+
+// to quit
+\q
